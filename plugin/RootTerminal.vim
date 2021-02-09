@@ -13,11 +13,21 @@ if exists('g:loaded_RootTerminal') || (v:version < 700)
 endif
 let g:loaded_RootTerminal = 1
 
+"- configuration ---------------------------------------------------------------
+
+if ! exists('g:RootTerminal_GuiTerminalCommand')
+    let g:RootTerminal_GuiTerminalCommand = 'x-terminal-emulator'
+endif
+
+
+
+"- commands --------------------------------------------------------------------
+
 if has('terminal')
     command! RootTerminal if ! RootTerminal#Terminal()| echoerr ingo#err#Get() | endif
 endif
 
-if executable('gnome-terminal')
+if exists('g:RootTerminal_GuiTerminalCommand') && executable(g:RootTerminal_GuiTerminalCommand)
     command! RootGuiTerminal if ! RootTerminal#GuiTerminal()| echoerr ingo#err#Get() | endif
 endif
 

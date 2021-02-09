@@ -52,11 +52,10 @@ function! RootTerminal#GuiTerminal() abort
 	return 0
     endif
 
-    let l:terminalCommand = 'gnome-terminal'
     let l:vcsChangeDirCommand = (ingo#fs#path#Equals(l:vcsRoot, getcwd()) ? '' : 'cd ' . ingo#compat#shellescape(l:vcsRoot))
-    silent let l:output = system(l:vcsChangeDirCommand . (empty(l:vcsChangeDirCommand) ? '' : ' && ') . l:terminalCommand)
+    silent let l:output = system(l:vcsChangeDirCommand . (empty(l:vcsChangeDirCommand) ? '' : ' && ') . g:RootTerminal_GuiTerminalCommand)
     if v:shell_error != 0
-	call ingo#err#Set(ingo#msg#MsgFromShellError(l:terminalCommand, l:output))
+	call ingo#err#Set(ingo#msg#MsgFromShellError(g:RootTerminal_GuiTerminalCommand, l:output))
 	return 0
     endif
     return 1
