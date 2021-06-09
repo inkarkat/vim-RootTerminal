@@ -53,7 +53,7 @@ function! RootTerminal#GuiTerminal() abort
     endif
 
     let l:vcsChangeDirCommand = (ingo#fs#path#Equals(l:vcsRoot, getcwd()) ? '' : 'cd ' . ingo#compat#shellescape(l:vcsRoot))
-    silent let l:output = system(l:vcsChangeDirCommand . (empty(l:vcsChangeDirCommand) ? '' : ' && ') . g:RootTerminal_GuiTerminalCommand)
+    silent let l:output = system(ingo#list#JoinNonEmpty([l:vcsChangeDirCommand, g:RootTerminal_GuiTerminalCommand], ' && '))
     if v:shell_error != 0
 	call ingo#err#Set(ingo#msg#MsgFromShellError(g:RootTerminal_GuiTerminalCommand, l:output))
 	return 0
