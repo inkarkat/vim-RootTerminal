@@ -26,6 +26,8 @@ function! RootTerminal#Terminal() abort
 	let l:chdirCommand = ingo#workingdir#ChdirCommand()
 	execute l:chdirCommand ingo#compat#fnameescape(l:vcsRoot)
     endif
+    let [l:save_VIM, l:save_VIMRUNTIME] = [$VIM, $VIMRUNTIME]
+    unlet! $VIM $VIMRUNTIME
     try
 	terminal
 
@@ -42,6 +44,8 @@ function! RootTerminal#Terminal() abort
 	return 1
     catch /^Vim\%((\a\+)\)\=:/
 	return 0
+    finally
+	let [$VIM, $VIMRUNTIME] = [l:save_VIM, l:save_VIMRUNTIME]
     endtry
 endfunction
 
@@ -53,7 +57,7 @@ function! RootTerminal#GuiTerminal() abort
     endif
 
     let l:vcsChangeDirCommand = (ingo#fs#path#Equals(l:vcsRoot, getcwd()) ? '' : 'cd ' . ingo#compat#shellescape(l:vcsRoot))
-    silent let l:output = system(ingo#list#JoinNonEmpty([l:vcsChangeDirCommand, g:RootTerminal_GuiTerminalCommand], ' && '))
+    silent let l:output = system(ingo#list#JoinNonEmpty([l:vcsChangeDirCommand, 'unset VIM VIMRUNTIME', g:RootTerminal_GuiTerminalCommand], ' && '))
     if v:shell_error != 0
 	call ingo#err#Set(ingo#msg#MsgFromShellError(g:RootTerminal_GuiTerminalCommand, l:output))
 	return 0
