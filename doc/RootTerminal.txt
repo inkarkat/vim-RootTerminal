@@ -30,18 +30,20 @@ RELATED WORKS								     *
 
 ==============================================================================
 USAGE							  *RootTerminal-usage*
-							  *:RootTerminal*
-:RootGuiTerminal	Open an external terminal emulator in the repository
-			root of the current buffer.
+							       *:RootTerminal*
 :RootTerminal		Open a new |:terminal| window in the repository root
 			of the current buffer.
+							    *:RootGuiTerminal*
+:RootGuiTerminal	Open an external terminal emulator in the repository
+			root of the current buffer.
 
 EXAMPLE							*RootTerminal-example*
 
 ==============================================================================
 INSTALLATION					   *RootTerminal-installation*
 
-The code is hosted in a Git repo at https://github.com/inkarkat/vim-RootTerminal
+The code is hosted in a Git repo at
+    https://github.com/inkarkat/vim-RootTerminal
 You can use your favorite plugin manager, or "git clone" into a directory used
 for Vim |packages|. Releases are on the "stable" branch, the latest unstable
 development snapshot on "master".
@@ -66,7 +68,10 @@ DEPENDENCIES					   *RootTerminal-dependencies*
 CONFIGURATION					  *RootTerminal-configuration*
 
 For a permanent configuration, put the following commands into your |vimrc|:
-configvar
+			*g:RootTerminal_GuiTerminalCommand*
+The shell command that launches the terminal emulator can be tweaked via: >
+    let g:RootTerminal_GuiTerminalCommand = 'gnome-terminal'
+<
 							  *RootTerminal-remap*
 plugmap
 ==============================================================================
