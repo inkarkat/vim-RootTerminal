@@ -61,6 +61,11 @@ The shell command that launches the terminal emulator can be tweaked via:
 
     let g:RootTerminal_GuiTerminalCommand = 'gnome-terminal'
 
+If you don't want the :RootGuiTerminal command, set the value to an empty
+string:
+
+    let g:RootTerminal_GuiTerminalCommand = ''
+
 plugmap
 CONTRIBUTING
 ------------------------------------------------------------------------------

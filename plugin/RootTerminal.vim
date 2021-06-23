@@ -17,6 +17,9 @@ let g:loaded_RootTerminal = 1
 
 if ! exists('g:RootTerminal_GuiTerminalCommand')
     let g:RootTerminal_GuiTerminalCommand = 'x-terminal-emulator'
+    if ! executable(g:RootTerminal_GuiTerminalCommand)
+	unlet g:RootTerminal_GuiTerminalCommand
+    endif
 endif
 
 
@@ -27,7 +30,7 @@ if has('terminal')
     command! RootTerminal if ! RootTerminal#Terminal()| echoerr ingo#err#Get() | endif
 endif
 
-if exists('g:RootTerminal_GuiTerminalCommand') && executable(g:RootTerminal_GuiTerminalCommand)
+if exists('g:RootTerminal_GuiTerminalCommand') && ! empty(g:RootTerminal_GuiTerminalCommand)
     command! RootGuiTerminal if ! RootTerminal#GuiTerminal()| echoerr ingo#err#Get() | endif
 endif
 

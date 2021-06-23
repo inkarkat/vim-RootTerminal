@@ -68,9 +68,12 @@ DEPENDENCIES					   *RootTerminal-dependencies*
 CONFIGURATION					  *RootTerminal-configuration*
 
 For a permanent configuration, put the following commands into your |vimrc|:
-			*g:RootTerminal_GuiTerminalCommand*
+					   *g:RootTerminal_GuiTerminalCommand*
 The shell command that launches the terminal emulator can be tweaked via: >
     let g:RootTerminal_GuiTerminalCommand = 'gnome-terminal'
+If you don't want the :RootGuiTerminal command, set the value to an empty
+string: >
+    let g:RootTerminal_GuiTerminalCommand = ''
 <
 							  *RootTerminal-remap*
 plugmap
