@@ -68,6 +68,13 @@ DEPENDENCIES					   *RootTerminal-dependencies*
 CONFIGURATION					  *RootTerminal-configuration*
 
 For a permanent configuration, put the following commands into your |vimrc|:
+					  *g:RootTerminal_TerminalEnvironment*
+You can modify the environment in which the |:terminal| is opened via a Dict
+of environment variables (keys are names, values are values); use |v:null| (or
+for backwards compatibility an empty List ([])) to remove an environment
+variable: >
+    let g:RootTerminal_TerminalEnvironment = {'delete_me': [], 'added': 'val'}
+<
 					   *g:RootTerminal_GuiTerminalCommand*
 The shell command that launches the terminal emulator can be tweaked via: >
     let g:RootTerminal_GuiTerminalCommand = 'gnome-terminal'

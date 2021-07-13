@@ -15,6 +15,10 @@ let g:loaded_RootTerminal = 1
 
 "- configuration ---------------------------------------------------------------
 
+if ! exists('g:RootTerminal_TerminalEnvironment')
+    let g:RootTerminal_TerminalEnvironment = {}
+endif
+
 if ! exists('g:RootTerminal_GuiTerminalCommand')
     let g:RootTerminal_GuiTerminalCommand = 'x-terminal-emulator'
     if ! executable(g:RootTerminal_GuiTerminalCommand)

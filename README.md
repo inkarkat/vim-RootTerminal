@@ -57,6 +57,13 @@ CONFIGURATION
 
 For a permanent configuration, put the following commands into your vimrc:
 
+You can modify the environment in which the :terminal is opened via a Dict
+of environment variables (keys are names, values are values); use v:null (or
+for backwards compatibility an empty List ([])) to remove an environment
+variable:
+
+    let g:RootTerminal_TerminalEnvironment = {'delete_me': [], 'added': 'val'}
+
 The shell command that launches the terminal emulator can be tweaked via:
 
     let g:RootTerminal_GuiTerminalCommand = 'gnome-terminal'

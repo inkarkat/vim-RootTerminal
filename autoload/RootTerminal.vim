@@ -7,6 +7,15 @@
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 
+function! s:SetEnvironment( environment ) abort
+    let l:oldEnvironment = {}
+    for l:key in keys(a:environment)
+	let l:oldEnvironment[l:key] = ingo#compat#getenv(l:key)
+	call ingo#compat#setenv(l:key, a:environment[l:key])
+    endfor
+    return l:oldEnvironment
+endfunction
+
 function! RootTerminal#Terminal() abort
     let l:vcsRoot = VcsRoot#Root()
     if empty(l:vcsRoot)
@@ -26,8 +35,11 @@ function! RootTerminal#Terminal() abort
 	let l:chdirCommand = ingo#workingdir#ChdirCommand()
 	execute l:chdirCommand ingo#compat#fnameescape(l:vcsRoot)
     endif
+
     let [l:save_VIM, l:save_VIMRUNTIME] = [$VIM, $VIMRUNTIME]
     unlet! $VIM $VIMRUNTIME
+    let l:save_environment = s:SetEnvironment(g:RootTerminal_TerminalEnvironment)
+
     try
 	terminal
 
@@ -45,6 +57,7 @@ function! RootTerminal#Terminal() abort
     catch /^Vim\%((\a\+)\)\=:/
 	return 0
     finally
+	call s:SetEnvironment(l:save_environment)
 	let [$VIM, $VIMRUNTIME] = [l:save_VIM, l:save_VIMRUNTIME]
     endtry
 endfunction
