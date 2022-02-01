@@ -2,7 +2,7 @@
 "
 " DEPENDENCIES:
 "
-" Copyright: (C) 2021 Ingo Karkat
+" Copyright: (C) 2021-2022 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
@@ -16,7 +16,7 @@ function! s:SetEnvironment( environment ) abort
     return l:oldEnvironment
 endfunction
 
-function! RootTerminal#Terminal() abort
+function! RootTerminal#Terminal( mods ) abort
     let l:vcsRoot = VcsRoot#Root()
     if empty(l:vcsRoot)
 	call ingo#err#Set('Cannot determine project root')
@@ -41,7 +41,7 @@ function! RootTerminal#Terminal() abort
     let l:save_environment = s:SetEnvironment(g:RootTerminal_TerminalEnvironment)
 
     try
-	terminal
+	execute a:mods 'terminal'
 
 	if exists('l:saved_autochdir')
 	    let &autochdir = l:saved_autochdir

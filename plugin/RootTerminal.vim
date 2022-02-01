@@ -1,8 +1,9 @@
 " RootTerminal.vim: Open a terminal in the repository's root directory.
 "
 " DEPENDENCIES:
+"   - ingo-library.vim plugin
 "
-" Copyright: (C) 2021 Ingo Karkat
+" Copyright: (C) 2021-2022 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
@@ -31,7 +32,7 @@ endif
 "- commands --------------------------------------------------------------------
 
 if has('terminal')
-    command! RootTerminal if ! RootTerminal#Terminal()| echoerr ingo#err#Get() | endif
+    command! RootTerminal if ! RootTerminal#Terminal(ingo#compat#command#Mods('<mods>'))| echoerr ingo#err#Get() | endif
 endif
 
 if exists('g:RootTerminal_GuiTerminalCommand') && ! empty(g:RootTerminal_GuiTerminalCommand)
