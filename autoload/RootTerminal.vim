@@ -42,6 +42,7 @@ function! RootTerminal#Terminal( mods ) abort
 
     try
 	execute a:mods 'terminal'
+	let b:cwd = l:vcsRoot
 
 	if exists('l:saved_autochdir')
 	    let &autochdir = l:saved_autochdir
