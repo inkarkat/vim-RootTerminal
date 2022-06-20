@@ -41,6 +41,7 @@ function! RootTerminal#Terminal( mods ) abort
     try
 	execute a:mods 'terminal'
 	let b:cwd = l:vcsRoot
+	let b:VcsRoot = l:vcsRoot   " XXX: vcscommand.vim uses bufname() to determine the current working directory; that doesn't work with terminal buffers that run !/bin/bash. By setting this explicitly, we avoid the plugin invocation through VcsRoot.vim.
 
 	if ! ingo#option#autochdir#Restore(l:save_autochdir) && exists('l:save_cwd')
 	    " Need to restore the cwd of the previous (original) window, not of
