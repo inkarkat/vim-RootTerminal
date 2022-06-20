@@ -23,13 +23,11 @@ function! RootTerminal#Terminal( mods ) abort
 	return 0
     endif
 
+    let l:save_autochdir = []
     if ! ingo#fs#path#Equals(l:vcsRoot, getcwd())
 	" XXX: Need to turn off 'autochdir' so that the changed directory has an
 	" effect on the opened terminal window.
-	if exists('+autochdir') && &autochdir
-	    let l:saved_autochdir = &autochdir
-	    set noautochdir
-	endif
+	let l:save_autochdir = ingo#option#autochdir#Disable()
 
 	let l:save_cwd = getcwd()
 	let l:chdirCommand = ingo#workingdir#ChdirCommand()
@@ -44,9 +42,7 @@ function! RootTerminal#Terminal( mods ) abort
 	execute a:mods 'terminal'
 	let b:cwd = l:vcsRoot
 
-	if exists('l:saved_autochdir')
-	    let &autochdir = l:saved_autochdir
-	elseif exists('l:save_cwd')
+	if ! ingo#option#autochdir#Restore(l:save_autochdir) && exists('l:save_cwd')
 	    " Need to restore the cwd of the previous (original) window, not of
 	    " the terminal window.
 	    wincmd p

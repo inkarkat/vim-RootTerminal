@@ -59,7 +59,7 @@ To uninstall, use the |:RmVimball| command.
 DEPENDENCIES					   *RootTerminal-dependencies*
 
 - Requires Vim 7.0 or higher.
-- Requires the |ingo-library.vim| plugin (vimscript #4433), version 1.043 or
+- Requires the |ingo-library.vim| plugin (vimscript #4433), version 1.045 or
   higher.
 - Requires the |VcsRoot.vim| plugin (vimscript #0000), version 1.00 or
   higher.
@@ -111,7 +111,7 @@ First published version.
 Started development.
 
 ==============================================================================
-Copyright: (C) 2021 Ingo Karkat
+Copyright: (C) 2021-2022 Ingo Karkat
 The VIM LICENSE applies to this plugin; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>
