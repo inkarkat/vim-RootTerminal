@@ -5,13 +5,15 @@ _by Ingo Karkat_
 DESCRIPTION
 ------------------------------------------------------------------------------
 
-This plugin ...
+When you use a single (G)Vim instance in an IDE-like fashion for multiple
+projects, the 'autochdir' option simplifies file operations as you jump around
+the various projects. When it's time to run tests or commit changes, you'll
+often want a terminal opened in the current project's root directory.
 
-### SOURCE
-(Original Vim tip, Stack Overflow answer, ...)
+This plugin provides commands to open a terminal (in a :terminal buffer or
+externally) in the repository root of the current buffer.
 
-### SEE ALSO
-(Plugins offering complementary functionality, or plugins using this library.)
+SEE ALSO                                                                     \*
 
 ### RELATED WORKS
 (Alternatives from other authors, other approaches, references not used here.)
@@ -47,7 +49,7 @@ To uninstall, use the :RmVimball command.
 ### DEPENDENCIES
 
 - Requires Vim 7.0 or higher.
-- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.043 or
+- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.045 or
   higher.
 - Requires the VcsRoot.vim plugin (unreleased), version 1.00 or
   higher.
@@ -90,7 +92,7 @@ First published version.
 - Started development.
 
 ------------------------------------------------------------------------------
-Copyright: (C) 2021 Ingo Karkat -
+Copyright: (C) 2021-2024 Ingo Karkat -
 The [VIM LICENSE](http://vimdoc.sourceforge.net/htmldoc/uganda.html#license) applies to this plugin.
 
 Maintainer:     Ingo Karkat &lt;ingo@karkat.de&gt;

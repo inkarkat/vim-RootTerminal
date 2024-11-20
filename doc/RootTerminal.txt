@@ -15,15 +15,18 @@ history				|RootTerminal-history|
 ==============================================================================
 DESCRIPTION					    *RootTerminal-description*
 
-This plugin ...
+When you use a single (G)Vim instance in an IDE-like fashion for multiple
+projects, the 'autochdir' option simplifies file operations as you jump around
+the various projects. When it's time to run tests or commit changes, you'll
+often want a terminal opened in the current project's root directory.
 
-HOW IT WORKS								     *
-
-SOURCE									     *
-(Original Vim tip, Stack Overflow answer, ...)
+This plugin provides commands to open a terminal (in a |:terminal| buffer or
+externally) in the repository root of the current buffer.
 
 SEE ALSO								     *
-(Plugins offering complementary functionality, or plugins using this library.)
+- |SpecialLocationComplete.vim| (vimscript #0000) offers (among others)
+  |:RootEdit|, |:RootSplit| etc. to address files relative to the repository
+  root.
 
 RELATED WORKS								     *
 (Alternatives from other authors, other approaches, references not used here.)
@@ -36,8 +39,6 @@ USAGE							  *RootTerminal-usage*
 							    *:RootGuiTerminal*
 :RootGuiTerminal	Open an external terminal emulator in the repository
 			root of the current buffer.
-
-EXAMPLE							*RootTerminal-example*
 
 ==============================================================================
 INSTALLATION					   *RootTerminal-installation*
@@ -111,7 +112,7 @@ First published version.
 Started development.
 
 ==============================================================================
-Copyright: (C) 2021-2022 Ingo Karkat
+Copyright: (C) 2021-2024 Ingo Karkat
 The VIM LICENSE applies to this plugin; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>
